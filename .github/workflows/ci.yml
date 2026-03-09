@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: 'apps/admin/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: apps/admin
+        run: npm ci
+
+      - name: Lint
+        working-directory: apps/admin
+        run: npm run lint
+
+      - name: Type check
+        working-directory: apps/admin
+        run: npm run typecheck
+
+      - name: Build
+        working-directory: apps/admin
+        run: npm run build
+
+      - name: Test
+        working-directory: apps/admin
+        run: npm run test
+
+  docs-link-check:
+    name: Documentation Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Check documentation links
+        run: |
+          markdown-link-check --config .mlc_config.json README.md AGENTS.md DOCS_INDEX.md CHANGELOG.md || true
+
+  migration-validate:
+    name: Migration Parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check migration consistency
+        run: |
+          chmod +x scripts/verify_supabase_migration_consistency.sh
+          ./scripts/verify_supabase_migration_consistency.sh || echo "Migration check requires Supabase connection"

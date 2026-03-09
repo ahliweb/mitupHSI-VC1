@@ -1,0 +1,25 @@
+{
+  "name": "@meetuphsi/personalfinance-edge",
+  "type": "module",
+  "version": "3.1.0",
+  "description": "MeetUP HSI Personal Finance Edge Functions",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "build": "wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.93.3",
+    "hono": "^4.8.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250620.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.22.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { TrendingUp, TrendingDown, Wallet, BarChart3 } from 'lucide-react';
+---
+
+<Layout title="Personal Finance Dashboard - MeetUP HSI">
+  <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <Wallet class="h-8 w-8 text-primary" />
+            <span class="text-xl font-bold">MeetUP HSI Finance</span>
+          </div>
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-sm font-medium hover:text-primary">Dashboard</a>
+            <a href="/transactions" class="text-sm font-medium text-muted-foreground hover:text-primary">Transactions</a>
+            <a href="/reports" class="text-sm font-medium text-muted-foreground hover:text-primary">Reports</a>
+            <a href="/budget" class="text-sm font-medium text-muted-foreground hover:text-primary">Budget</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold tracking-tight">Financial Overview</h1>
+        <p class="text-muted-foreground mt-1">Track your income and expenses</p>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle class="text-sm font-medium">Total Income</CardTitle>
+            <TrendingUp class="h-4 w-4 text-green-500" />
+          </CardHeader>
+          <CardContent>
+            <div class="text-2xl font-bold text-green-600">Rp 0</div>
+            <p class="text-xs text-muted-foreground mt-1">This month</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle class="text-sm font-medium">Total Expenses</CardTitle>
+            <TrendingDown class="h-4 w-4 text-red-500" />
+          </CardHeader>
+          <CardContent>
+            <div class="text-2xl font-bold text-red-600">Rp 0</div>
+            <p class="text-xs text-muted-foreground mt-1">This month</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle class="text-sm font-medium">Balance</CardTitle>
+            <Wallet class="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div class="text-2xl font-bold">Rp 0</div>
+            <p class="text-xs text-muted-foreground mt-1">Net balance</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle class="text-sm font-medium">Budget Usage</CardTitle>
+            <BarChart3 class="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div class="text-2xl font-bold">0%</div>
+            <p class="text-xs text-muted-foreground mt-1">of monthly budget</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Transactions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div class="text-center py-8 text-muted-foreground">
+              <p>No transactions yet</p>
+              <p class="text-sm mt-1">Connect to admin panel to start tracking</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Top Categories</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div class="text-center py-8 text-muted-foreground">
+              <p>No category data</p>
+              <p class="text-sm mt-1">Categories will appear here</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
+
+    <footer class="border-t mt-16 py-8 bg-slate-50">
+      <div class="container mx-auto px-4 text-center text-sm text-muted-foreground">
+        <p>&copy; 2026 MeetUP HSI Personal Finance. All rights reserved.</p>
+        <p class="mt-1">Powered by AWCMS 3.1.0</p>
+      </div>
+    </footer>
+  </div>
+</Layout>

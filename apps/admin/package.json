@@ -1,8 +1,8 @@
 {
-  "name": "awcms",
-  "description": "AWCMS - Ahliweb Content Management System",
+  "name": "meetuphsi-personalfinance",
+  "description": "MeetUP HSI Personal Finance - AWCMS 3.1.0",
   "type": "module",
-  "version": "2.33.0",
+  "version": "3.1.0",
   "private": true,
   "scripts": {
     "deploy:functions": "npx supabase functions deploy",
@@ -10,10 +10,11 @@
     "dev": "node scripts/check_secrets.js && vite",
     "dev:full": "node scripts/check_secrets.js && (cd .. && npx supabase functions serve &) && vite",
     "test": "vitest",
-    "docs:check": "npx markdown-link-check --config ../.mlc_config.json ../README.md ../AGENTS.md README.md ../DOCS_INDEX.md ../CHANGELOG.md ../CONTRIBUTING.md ../SECURITY.md ../CODE_OF_CONDUCT.md ../docs/**/*.md",
+    "docs:check": "npx markdown-link-check --config ../.mlc_config.json ../README.md ../AGENTS.md README.md ../DOCS_INDEX.md ../CHANGELOG.md && node ../scripts/check_markdown_local_links.mjs",
     "db:pull": "npx supabase db pull --schema public",
     "build": "vite build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@puckeditor/core": "^0.21.0",

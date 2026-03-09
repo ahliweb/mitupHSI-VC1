@@ -1,0 +1,50 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "description": "Context7 documentation search and AI guidance"
+    },
+    "supabase": {
+      "command": "node",
+      "args": ["awcms-mcp/dist/index.js"],
+      "description": "Local Supabase MCP server for database operations"
+    }
+  },
+  "remoteServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "description": "Context7 remote MCP server"
+    },
+    "cloudflare-api": {
+      "description": "Cloudflare API for Workers, R2, D1"
+    },
+    "cloudflare-docs": {
+      "description": "Cloudflare documentation"
+    },
+    "github": {
+      "command": "bash",
+      "args": ["scripts/start_github_mcp.sh"],
+      "description": "GitHub MCP server"
+    }
+  },
+  "libraryIds": {
+    "supabase": "supabase/supabase",
+    "supabase-js": "supabase/supabase-js",
+    "supabase-cli": "supabase/cli",
+    "vite": "vitejs/vite",
+    "astro": "withastro/docs",
+    "cloudflare": "cloudflare/cloudflare-docs",
+    "react-router": "remix-run/react-router",
+    "react": "websites/react_dev",
+    "tailwindcss": "websites/tailwindcss",
+    "tiptap": "ueberdosis/tiptap-docs",
+    "puck": "puckeditor/puck",
+    "framer-motion": "grx7/framer-motion",
+    "ollama": "ollama/ollama",
+    "ollama-js": "ollama/ollama-js"
+  }
+}
